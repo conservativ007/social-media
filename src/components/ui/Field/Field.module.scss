@@ -1,0 +1,23 @@
+.field {
+
+  @apply flex items-center relative;
+
+  >input {
+    @apply border-none bg-transparent 
+    outline-none placeholder:text-[#666463];
+  }
+
+  &:focus-within {
+    .icon {
+      @apply text-white;
+    }
+  }
+
+  .icon {
+    @apply mr-3 text-[#666463] transition-colors duration-300 ease-linear;
+  }
+
+  .error {
+    @apply text-red-600 text-xs absolute -bottom-5 left-9;
+  }
+}

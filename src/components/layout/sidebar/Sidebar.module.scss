@@ -1,0 +1,26 @@
+.sidebar {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // align-items: center;
+  border-right: 2px;
+  border-color: rgba( 255, 255, 255,.1);
+  @apply flex items-center flex-col justify-between p-layout;
+
+  a {
+    @apply mb-8 block;
+
+    &.active >svg {
+      @apply text-white
+    }
+  }
+  
+  svg {
+    @apply text-[#7C7275] duration-300 ease-in-out transition-colors;
+
+    &:hover {
+      @apply text-white
+    }
+  }
+}
+
