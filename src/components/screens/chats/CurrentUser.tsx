@@ -11,7 +11,7 @@ export default function CurrentUser() {
 	const { user, isLoggedIn } = useAuth()
 	const { push } = useRouter()
 
-	// console.log(isLoggedIn)
+	console.log(user)
 
 	return (
 		<div className='p-layout flex items-center justify-between'>
