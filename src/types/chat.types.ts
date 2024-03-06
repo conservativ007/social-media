@@ -1,21 +1,28 @@
 import { IUser } from './user.types'
 
 export interface IMessage {
-	id: string
+	id: number
 	text: string
 	createdAt: string
 	sender: IUser
 }
 
 export interface IChat {
-	createdAt: string
+	id: number
+	// createdAt: string
 	messages: IMessage[]
 	participants: IUser[]
 }
 
 export interface IstrapiChat {
-	messages: { data: IStrapiResponse<IMessage>[] }
-	participants: { data: IStrapiResponse<IUser>[] }
+	id: number
+	messages: { data: IMessage[] }
+	participants: { data: IUser[] }
+}
+
+export interface IstrapiChat2 {
+	messages: IMessage[]
+	participants: IUser[]
 }
 
 export interface IStrapiResponse<T> {
