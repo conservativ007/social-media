@@ -1,15 +1,45 @@
 'use client'
 
+import { fetchClient } from '@/$api/api.fetch'
 import { Field } from '@/components/ui/Field/Filed'
+import { useAuth } from '@/hooks/useAuth'
+import { useReactQuerySubscription } from '@/hooks/useReactQuerySubscription'
+import { useMutation } from '@tanstack/react-query'
 import { ArrowRightToLine, Send } from 'lucide-react'
+import { useParams } from 'next/navigation'
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
 
 export function MessagesField() {
 	const [message, setMessage] = useState('')
+	const { user } = useAuth()
+
+	const send = useReactQuerySubscription()
+
+	const { id } = useParams()
+	const { mutate } = useMutation({
+		mutationKey: ['update chat'],
+		mutationFn: () =>
+			fetchClient.post('/messages', {
+				data: {
+					text: message,
+					sender: user?.id,
+					chat: id
+				}
+			}),
+		onSuccess() {
+			send({
+				operation: 'invalidate',
+				entity: 'chat',
+				id: id.toString()
+			})
+			setMessage('')
+		}
+	})
 
 	const onSubmit = () => {
 		if (!message) return
+
+		mutate()
 	}
 
 	return (
@@ -20,6 +50,9 @@ export function MessagesField() {
 				value={message}
 				onChange={e => setMessage(e.target.value)}
 				className='w-4/5'
+				onKeyDown={e => {
+					if (e.key === 'Enter') onSubmit()
+				}}
 			/>
 			<button
 				className='hover:text-primary transition-colors'

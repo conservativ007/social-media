@@ -6,11 +6,8 @@ import dayjs from 'dayjs'
 import { getImageUrl } from '@/app/config/get-image-url.config'
 
 export function Message({ message }: { message: IMessage }) {
-	// return
 	const { user } = useAuth()
 	const isSender = user?.email === message.sender.email
-
-	// console.log(user)
 
 	return (
 		<div
@@ -28,13 +25,23 @@ export function Message({ message }: { message: IMessage }) {
 					width={45}
 					height={45}
 				/>
-				<div
-					className={`bg-gray-200 p-2 rounded-lg ${isSender ? 'mr-2' : 'ml-3'}`}
-				>
-					<p className='text-sm text-gray-800'>{message.text}</p>
-					<span className='text-xs opacity-30 block mt-1 text-slate-950'>
+				<div className={`${isSender ? 'mr-3' : 'ml-3'}`}>
+					<div
+						className={`text-sm text-white py-1 px-3 mt-2 rounded-2xl ${
+							isSender
+								? 'rounded-tr-none bg-primary'
+								: 'rounded-tl-none bg-border'
+						}`}
+					>
+						{message.text}
+					</div>
+					<div
+						className={`text-xs opacity-30 block mt-1.5  ${
+							isSender ? 'text-right' : 'text-left'
+						}`}
+					>
 						{dayjs(message.createdAt).format('HH:mm')}
-					</span>
+					</div>
 				</div>
 			</div>
 		</div>

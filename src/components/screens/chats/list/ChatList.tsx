@@ -6,7 +6,7 @@ import { Loader } from '@/components/ui/loader/Loader'
 import { IChat } from '@/types/chat.types'
 import { useQuery } from '@tanstack/react-query'
 import { Search } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ChatListItem from './ChatListItem'
 import { useAuth } from '@/hooks/useAuth'
 import { useDebounce } from '@/hooks/useDebounce'
@@ -16,8 +16,6 @@ export default function ChatList() {
 
 	const [searchTerm, setSearchTerm] = useState('')
 	const debounceSearchTerm = useDebounce(searchTerm)
-
-	// console.log(user)
 
 	const { data, isLoading, isSuccess } = useQuery({
 		queryKey: ['chats', debounceSearchTerm],
@@ -54,14 +52,6 @@ export default function ChatList() {
 					</div>
 				) : data?.data?.length ? (
 					data?.data.map(chat => {
-						// console.log('participants')
-						// console.log(participants)
-
-						// const chat = {
-						// 	messages,
-						// 	participants
-						// }
-						// return <div></div>
 						return <ChatListItem key={chat.id} chat={chat} />
 					})
 				) : (
@@ -70,26 +60,4 @@ export default function ChatList() {
 			</div>
 		</div>
 	)
-	// return (
-	// 	<div>
-	// 		<div className='border-t border-b border-border p-layout'>
-	// 			<Field placeholder='Search chats' Icon={Search} />
-	// 		</div>
-	// 		<div>
-	// 			{isLoading ? (
-	// 				<div className='p-layout'>
-	// 					<Loader />
-	// 				</div>
-	// 			) : data?.data.length ? (
-	// 				data?.data.map(({ id, attributes: chat }) => {
-	// 					console.log('chat')
-	// 					console.log(chat)
-	// 					return <ChatListItem key={id} data={chat} />
-	// 				})
-	// 			) : (
-	// 				<p className='p-layout'>Chats not found!</p>
-	// 			)}
-	// 		</div>
-	// 	</div>
-	// )
 }

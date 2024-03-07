@@ -1,6 +1,8 @@
 'use client'
 
+import { Loader } from '@/components/ui/loader/Loader'
 import { useAuth } from '@/hooks/useAuth'
+import { useProfile } from '@/hooks/useProfile'
 import { LogOut } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 import Image from 'next/image'
@@ -8,22 +10,25 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function CurrentUser() {
-	const { user, isLoggedIn } = useAuth()
+	const { user } = useAuth()
 	const { push } = useRouter()
 
-	console.log(user)
+	const { isLoading } = useProfile()
 
 	return (
 		<div className='p-layout flex items-center justify-between'>
 			<div className='flex items-center'>
-				<Image
-					src={user?.avatar || '/no-avatar.png'}
-					alt='avatar'
-					width={50}
-					height={50}
-					className='mr-4'
-				/>
-
+				{isLoading ? (
+					<Loader />
+				) : (
+					<Image
+						src={user?.avatar || '/no-avatar.png'}
+						alt='avatar'
+						width={50}
+						height={50}
+						className='mr-4'
+					/>
+				)}
 				<span>{user?.name}</span>
 			</div>
 			<button
