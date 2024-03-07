@@ -27,9 +27,6 @@ class FetchClient {
 				}
 			}
 
-			// console.log('headers')
-			// console.log(headers)
-
 			const response = await fetch(`${this.API_URL}${endpoint}`, {
 				method,
 				headers,
@@ -38,9 +35,6 @@ class FetchClient {
 			})
 
 			const data = await response.json()
-
-			// console.log('const data = await response.json()')
-			// console.log(data)
 
 			if (data.errors) {
 				console.error('Fetch errors:', data.errors)
@@ -75,6 +69,15 @@ class FetchClient {
 		isAuth: boolean = false
 	): Promise<T> {
 		return this.performFetch<T>(endpoint, 'POST', body, customHeaders, isAuth)
+	}
+
+	async put<T>(
+		endpoint: string,
+		body?: Record<string, any>,
+		customHeaders?: Record<string, string>,
+		isAuth: boolean = false
+	): Promise<T> {
+		return this.performFetch<T>(endpoint, 'PUT', body, customHeaders, isAuth)
 	}
 }
 

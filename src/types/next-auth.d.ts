@@ -16,6 +16,7 @@ declare module 'next-auth' {
 		avatar?: string
 		id?: string
 		jwt?: string
+		friends?: User[]
 	}
 }
 

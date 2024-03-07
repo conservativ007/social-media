@@ -31,9 +31,9 @@ export default NextAuth({
 						)
 						console.log('register', data)
 						return {
-							id: data.user.email,
+							id: data.user.id.toString(),
 							email: data.user.email,
-							avatar: data.user.avatar,
+							avatar: data.user.avatar?.url,
 							name: data.user.username,
 							jwt: data.jwt
 						} as User
@@ -56,9 +56,9 @@ export default NextAuth({
 					// console.log(req.body)
 					console.dir(data, { depth: null })
 					return {
-						id: data.user.email,
+						id: data.user.id.toString(),
 						email: data.user.email,
-						avatar: data.user.avatar,
+						avatar: data.user.avatar?.url,
 						name: data.user.username,
 						jwt: data.jwt
 					} as User

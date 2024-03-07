@@ -6,6 +6,7 @@ export type IUser = {
 	email: string
 	confirmed: boolean
 	role: string
+	friends: IUser[]
 	avatar: {
 		url: string
 		// data: IStrapiResponse<{ url: string }>
