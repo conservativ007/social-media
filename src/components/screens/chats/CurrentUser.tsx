@@ -16,20 +16,20 @@ export default function CurrentUser() {
 	const { isLoading } = useProfile()
 
 	return (
-		<div className='p-layout flex items-center justify-between'>
-			<div className='flex items-center'>
+		<div className='sm:p-0 sm:pt-5  p-layout flex items-center justify-between sm:flex-col sm:gap-5'>
+			<div className='flex items-center '>
 				{isLoading ? (
 					<Loader />
 				) : (
 					<Image
 						src={user?.avatar || '/no-avatar.png'}
 						alt='avatar'
-						width={50}
-						height={50}
+						width={40}
+						height={40}
 						className='mr-4'
 					/>
 				)}
-				<span>{user?.name}</span>
+				<span className='sm:hidden'>{user?.name}</span>
 			</div>
 			<button
 				className='text-[#7C7275] hover:text-white transition-colors'

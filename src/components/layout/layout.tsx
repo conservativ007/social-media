@@ -9,11 +9,7 @@ export default function LayoutClient({ children }: PropsWithChildren<unknown>) {
 		<MainProvider>
 			<main className={styles.layout}>
 				<Sidebar />
-				<section
-				// className={styles.section}
-				>
-					{children}
-				</section>
+				<section>{children}</section>
 				<Toaster position='top-right' />
 			</main>
 		</MainProvider>

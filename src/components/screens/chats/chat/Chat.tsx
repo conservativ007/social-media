@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import ChatList from '../list/ChatList'
+import React from 'react'
 import { MessagesField } from './MessagesField'
 import { useQuery } from '@tanstack/react-query'
 import { fetchClient } from '@/$api/api.fetch'
@@ -10,6 +9,7 @@ import { Message } from './Message'
 import { ChatHeader } from './ChatHeader'
 import { useAuth } from '@/hooks/useAuth'
 import { Loader } from '@/components/ui/loader/Loader'
+// import { useUsersZustand } from '@/store/zustand'
 
 export default function Chat({ id }: { id: string }) {
 	const query = `/chats/${id}?populate[messages][populate][sender][populate][avatar]=*
@@ -24,18 +24,15 @@ export default function Chat({ id }: { id: string }) {
 
 	const { user } = useAuth()
 
-	// const [myself, setMyself] = useState('')
-
-	// console.log(user)
-	// console.log(data)
-
 	const correspondent = data?.participants.find(
 		participant => participant.email !== user?.email
 	)
 
+	// const { setToFalse, setToTrue, showUsers } = useUsersZustand()
+
 	return (
 		<div
-			className='w-8/12 border-r border-border h-full grid'
+			className={`border-r border-border h-full grid `}
 			style={{ gridTemplateRows: isLoading ? '1fr .1fr' : '.6fr 6fr .6fr' }}
 		>
 			{isLoading ? (

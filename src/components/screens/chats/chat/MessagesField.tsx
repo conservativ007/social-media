@@ -43,24 +43,26 @@ export function MessagesField() {
 	}
 
 	return (
-		<div className='border-t border-border p-layout flex items-center justify-between'>
-			<Field
-				placeholder='Write a message...'
-				Icon={ArrowRightToLine}
-				value={message}
-				onChange={e => setMessage(e.target.value)}
-				className='w-4/5'
-				onKeyDown={e => {
-					if (e.key === 'Enter') onSubmit()
-				}}
-			/>
-			<button
-				className='hover:text-primary transition-colors'
-				onClick={onSubmit}
-				disabled={!message}
-			>
-				<Send />
-			</button>
+		<div className='border-t border-border p-layout flex items-center justify-between sm:fixed bottom-0 left-0 right-0'>
+			<div className='sm:max-w-[360px] sm:ml-auto sm:mr-auto flex'>
+				<Field
+					placeholder='Write a message...'
+					Icon={ArrowRightToLine}
+					value={message}
+					onChange={e => setMessage(e.target.value)}
+					className='w-4/5'
+					onKeyDown={e => {
+						if (e.key === 'Enter') onSubmit()
+					}}
+				/>
+				<button
+					className='hover:text-primary transition-colors'
+					onClick={onSubmit}
+					disabled={!message}
+				>
+					<Send />
+				</button>
+			</div>
 		</div>
 	)
 }

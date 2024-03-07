@@ -1,8 +1,4 @@
 .sidebar {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
-  // align-items: center;
   border-right: 2px;
   border-color: rgba( 255, 255, 255,.1);
   @apply flex items-center flex-col justify-between p-layout;
@@ -20,6 +16,20 @@
 
     &:hover {
       @apply text-white
+    }
+  }
+
+  @media (max-width: 640px) {
+    max-width: 400px;
+    flex-direction: row;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 35px;
+
+    a {
+      margin-bottom: 0;
+      padding: 7px;
     }
   }
 }

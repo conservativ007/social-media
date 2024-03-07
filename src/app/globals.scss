@@ -6,6 +6,9 @@ html, body {
   height: 100%;
   color: #eFeFF3;
   background: linear-gradient(to top right,#0F0104,#14060d),#0f0104;
+
+  display: flex;
+  justify-content: center;
 }
 
 h1 {

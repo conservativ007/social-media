@@ -17,7 +17,7 @@ export default function ChatList() {
 	const [searchTerm, setSearchTerm] = useState('')
 	const debounceSearchTerm = useDebounce(searchTerm)
 
-	const { data, isLoading, isSuccess } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['chats', debounceSearchTerm],
 		queryFn: () =>
 			fetchClient.get<{ data: IChat[] }>(
@@ -36,8 +36,8 @@ export default function ChatList() {
 	})
 
 	return (
-		<div>
-			<div className='border-t border-b border-border p-layout'>
+		<div className='min-w-[40px]'>
+			<div className='border-t border-b border-border p-layout sm:hidden'>
 				<Field
 					placeholder='Search chats'
 					Icon={Search}
