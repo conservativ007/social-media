@@ -26,7 +26,7 @@ export default function CurrentUser() {
 						alt='avatar'
 						width={40}
 						height={40}
-						className='mr-4'
+						className='mr-4 sm:mr-0 sm:w-[30px] sm:h-[30px]'
 					/>
 				)}
 				<span className='sm:hidden'>{user?.name}</span>

@@ -32,7 +32,8 @@ export default function Chat({ id }: { id: string }) {
 
 	return (
 		<div
-			className={`border-r border-border h-full grid `}
+			className={`border-r border-border sm:min-w-[293px] flex flex-col`}
+			// className={`border-r border-border h-full grid sm:min-w-[293px]`}
 			style={{ gridTemplateRows: isLoading ? '1fr .1fr' : '.6fr 6fr .6fr' }}
 		>
 			{isLoading ? (
@@ -42,7 +43,7 @@ export default function Chat({ id }: { id: string }) {
 			) : (
 				<>
 					<ChatHeader correspondent={correspondent} />
-					<div className='p-layout border-t border-border'>
+					<div className='p-layout border-t border-border overflow-auto sm:h-[calc(100vh-220px)] h-[calc(100vh-160px)]'>
 						{data?.messages.map(message => (
 							<Message key={message.id} message={message} />
 						))}

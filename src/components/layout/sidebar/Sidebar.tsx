@@ -19,7 +19,14 @@ export function Sidebar() {
 		<aside className={styles.sidebar}>
 			{isLoggedIn === true ? (
 				<>
-					<Image src='/logo.svg' priority alt='' width={45} height={45} />
+					<Image
+						src='/logo.svg'
+						priority
+						alt=''
+						width={45}
+						height={45}
+						className='sm:w-[30px] sm:h-[30px]'
+					/>
 					<div className='sm:flex'>
 						{MENU.map(item => (
 							<Link

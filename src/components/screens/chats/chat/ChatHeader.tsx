@@ -6,7 +6,7 @@ import { getImageUrl } from '@/app/config/get-image-url.config'
 
 export function ChatHeader({ correspondent }: { correspondent?: IUser }) {
 	return (
-		<div className='p-layout flex items-center justify-between'>
+		<div className='p-layout flex items-center justify-between border-border border-t sm:flex-shrink-0'>
 			<div className='flex items-center'>
 				<Image
 					src={getImageUrl(correspondent?.avatar?.url) || '/no-avatar.png'}

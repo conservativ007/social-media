@@ -43,8 +43,9 @@ export function MessagesField() {
 	}
 
 	return (
-		<div className='border-t border-border p-layout flex items-center justify-between sm:fixed bottom-0 left-0 right-0'>
-			<div className='sm:max-w-[360px] sm:ml-auto sm:mr-auto flex'>
+		<div className='border-t border-border p-layout flex items-center justify-between sm:flex-shrink-0'>
+			{/* <div className='border-t border-border p-layout flex items-center justify-between sm:fixed bottom-0 left-0 right-0'> */}
+			<div className=' flex justify-between w-full sm:max-w-[360px] sm:ml-auto sm:mr-auto'>
 				<Field
 					placeholder='Write a message...'
 					Icon={ArrowRightToLine}

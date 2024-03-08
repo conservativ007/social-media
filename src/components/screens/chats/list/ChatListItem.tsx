@@ -21,14 +21,14 @@ export default function ChatListItem({ chat }: IChatListItem) {
 	return (
 		<Link
 			href={`/chat/${chat.id}`}
-			className='h-[96px] p-layout  flex items-center border-b border-border duration-100 ease-linear transition-colors hover:bg-border animation-slide-fade sm:p-0 sm:h-[70px]'
+			className='h-[96px] p-layout flex items-center sm:justify-center border-b border-border duration-100 ease-linear transition-colors hover:bg-border animation-slide-fade sm:p-0 sm:h-[70px] sm:border-b-0'
 		>
 			<Image
 				src={getImageUrl(correspondent?.avatar?.url) || '/avatar1.png'}
 				alt='avatar'
 				width={40}
 				height={40}
-				className='mr-4'
+				className='mr-4 w-[40px] sm:w-[30px] h-[40px] sm:h-[30px] sm:mr-0'
 			/>
 			<div className='w-full sm:hidden'>
 				<div className='flex justify-between items-center'>
