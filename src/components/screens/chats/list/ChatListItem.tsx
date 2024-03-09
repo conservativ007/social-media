@@ -24,7 +24,7 @@ export default function ChatListItem({ chat }: IChatListItem) {
 			className='h-[96px] p-layout flex items-center sm:justify-center border-b border-border duration-100 ease-linear transition-colors hover:bg-border animation-slide-fade sm:p-0 sm:h-[70px] sm:border-b-0'
 		>
 			<Image
-				src={getImageUrl(correspondent?.avatar?.url) || '/avatar1.png'}
+				src={getImageUrl(correspondent?.avatar?.url) || '/no-avatar.png'}
 				alt='avatar'
 				width={40}
 				height={40}

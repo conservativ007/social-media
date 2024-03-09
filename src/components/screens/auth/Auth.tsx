@@ -60,7 +60,7 @@ function Auth({ type }: IAuth) {
 					type='email'
 					Icon={AtSign}
 					className='mb-7'
-					// error={{ message: 'невернывй пароль', type: 'min' }}
+					value={'maks@email.com'}
 				/>
 				<Field
 					{...register('password', { required: true })}
@@ -68,6 +68,7 @@ function Auth({ type }: IAuth) {
 					type='password'
 					Icon={Key}
 					className='mb-12'
+					value={'123456'}
 				/>
 				<div className='text-center'>
 					<Button type='submit' isLoading={loading}>

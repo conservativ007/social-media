@@ -3,13 +3,14 @@
 import { fetchClient } from '@/$api/api.fetch'
 import { Field } from '@/components/ui/Field/Filed'
 import { Loader } from '@/components/ui/loader/Loader'
-import { IChat } from '@/types/chat.types'
 import { useQuery } from '@tanstack/react-query'
 import { Search } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ChatListItem from './ChatListItem'
 import { useAuth } from '@/hooks/useAuth'
 import { useDebounce } from '@/hooks/useDebounce'
+import { IUser } from '@/types/user.types'
+import { IChat } from '@/types/chat.types'
 
 export default function ChatList() {
 	const { user, isLoggedIn } = useAuth()
@@ -21,11 +22,6 @@ export default function ChatList() {
 		queryKey: ['chats', debounceSearchTerm],
 		queryFn: () =>
 			fetchClient.get<{ data: IChat[] }>(
-				// `/chats?sort=createdAt:desc
-				// 	&populate[messages]=*
-				// 	&populate[participants][populate][avatar]=*
-
-				// 	`,
 				`/chats?sort=createdAt:desc
 					&populate[messages]=*
 					&populate[participants][populate][avatar]=*
@@ -33,7 +29,6 @@ export default function ChatList() {
 					&filters[$or][0][participants][username][$contains]=${debounceSearchTerm}
 					&filters[$or][1][messages][text][$contains]=${debounceSearchTerm}
 					`,
-
 				undefined,
 				true
 			),

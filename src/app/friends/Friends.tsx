@@ -13,7 +13,9 @@ export function Friends() {
 	const { data, isLoading, isFetching } = useQuery({
 		queryKey: ['users'],
 		queryFn: () =>
-			fetchClient.get<IUser[]>('/users?populate=avatar&populate=friends')
+			fetchClient.get<IUser[]>(`
+		/users?populate=avatar
+		`)
 	})
 
 	const { data: authUser } = useProfile()
@@ -40,7 +42,7 @@ export function Friends() {
 									alt='user-avatar'
 									width={50}
 									height={50}
-									className='mx-auto'
+									className='mx-auto w-[50px] h-[50px]'
 								/>
 								<p className='mt-3 text-xl font-medium sm:text-sm '>
 									{user.username}
