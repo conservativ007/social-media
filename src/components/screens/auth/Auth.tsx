@@ -48,7 +48,7 @@ function Auth({ type }: IAuth) {
 	}
 
 	return (
-		<div className='flex w-screen h-full'>
+		<div className='flex h-full'>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className='m-auto block w-96 border border-border p-8'

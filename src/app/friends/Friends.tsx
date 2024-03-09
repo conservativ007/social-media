@@ -19,21 +19,21 @@ export function Friends() {
 	const { data: authUser } = useProfile()
 
 	return (
-		<div className='w-7/12'>
+		<div>
 			<h1 className='p-layout'>People</h1>
 			{isLoading || isFetching ? (
 				<div className='p-layout'>
 					<Loader />
 				</div>
 			) : (
-				<div className=' grid grid-cols-3 border border-border border-b-0 border-r-0 border-l-0'>
+				<div className=' grid grid-cols-3 gap-3'>
 					{data?.map(user => {
 						const isFriend = authUser?.friends?.some(u => u.id === user.id)
 
 						return (
 							<div
 								key={user.id}
-								className='text-center p-layout border border-border border-t-0'
+								className='text-center p-layout border border-border max-w-[300px]'
 							>
 								<Image
 									src={getImageUrl(user.avatar?.url) || '/avatar1.png'}
@@ -42,9 +42,11 @@ export function Friends() {
 									height={50}
 									className='mx-auto'
 								/>
-								<p className='mt-3 text-xl font-medium'>{user.username}</p>
-								<button className='border-b border-white transition-colors hover:border-primary cursor-pointer mt-2'>
-									{isFriend ? 'Remove from friend' : 'Add to friend'}
+								<p className='mt-3 text-xl font-medium sm:text-sm '>
+									{user.username}
+								</p>
+								<button className='border-b border-white transition-colors hover:border-primary cursor-pointer mt-2 sm:text-sm'>
+									{isFriend ? 'Remove friend' : 'Add friend'}
 								</button>
 							</div>
 						)

@@ -28,8 +28,6 @@ export default function Chat({ id }: { id: string }) {
 		participant => participant.email !== user?.email
 	)
 
-	// const { setToFalse, setToTrue, showUsers } = useUsersZustand()
-
 	return (
 		<div
 			className={`border-r border-border sm:min-w-[293px] flex flex-col`}
